@@ -55,7 +55,7 @@ class A {
             .append("g")
             .attr("transform", `translate(${margin},${-16})`)
             .call(axisy);
-        
+
         //tooltip
         var tooltip = d3.select("body")
             .data(arr).enter()
