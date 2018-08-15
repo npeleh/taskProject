@@ -2,10 +2,13 @@ let path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let conf = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js',
+        figure: './src/figure.js'
+    },
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'main.js',
+        filename: '[name].js',
         publicPath: "dist/"
     }, devServer: {
         overlay: true
