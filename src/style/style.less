@@ -1,0 +1,17 @@
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+.chart-container {
+  .title {
+    color: @light-blue;
+  }
+
+  svg, h1 {
+    margin-left: 20px;
+
+    rect {
+      &:hover {
+        opacity: .5;
+      }
+    }
+  }
+}
