@@ -25,9 +25,8 @@ class Diagram {
             .attr('y', num => 235 - (num * 15))
             .on("mouseover", (num, i) => {
                 item = arr[i]*15;
-                tooltip.style("visibility", "visible")
-                    .style("background-color", 'white')
-                    .style("color", 'darkblue')
+                tooltip.attr('class','tooltip')
+                    .style("visibility", "visible")
                     .text(item);
             })
             .on("mousemove", () => tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"))
