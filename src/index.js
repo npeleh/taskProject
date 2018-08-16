@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import './style/style.less';
 import * as d3 from 'd3';
+import {Tooltip} from './tooltip.js';
 
 class Diagram {
     constructor(svg) {
@@ -13,6 +14,8 @@ class Diagram {
         const width = 250;
         const margin = 25;
         let item;
+        let tooltip = new Tooltip();
+
 
         this.svg
             .selectAll('rect')
@@ -25,12 +28,13 @@ class Diagram {
             .attr('y', num => 235 - (num * 15))
             .on("mouseover", (num, i) => {
                 item = arr[i]*15;
-                tooltip.attr('class','tooltip')
-                    .style("visibility", "visible")
-                    .text(item);
+                tooltip.show(item);
             })
-            .on("mousemove", () => tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px"))
-            .on("mouseout", ()=> tooltip.style("visibility", "hidden"));
+            .on("mousemove", (num, i) => {
+                tooltip.hide();
+                tooltip.show(arr[i]*15);
+            })
+            .on("mouseout", ()=> tooltip.hide());
 
         //axisx
         let scalex = d3.scaleLinear()
@@ -54,14 +58,6 @@ class Diagram {
             .append("g")
             .attr("transform", `translate(${margin},${-16})`)
             .call(axisy);
-
-        //tooltip
-        let tooltip = d3.select("body")
-            .data(arr).enter()
-            .append("div")
-            .style("position", "absolute")
-            .style("z-index", "0")
-            .style("visibility", "hidden")
     }
 }
 
