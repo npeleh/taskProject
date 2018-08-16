@@ -29,7 +29,7 @@ class Diagram {
                 item = arr[i]*15;
                 tooltip.show(item);
             })
-            .on("mousemove", () => tooltip.move())
+            .on("mousemove", () => tooltip.show())
             .on("mouseout", ()=> tooltip.hide());
 
         //axisx
