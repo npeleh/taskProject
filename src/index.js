@@ -16,6 +16,7 @@ class Diagram {
         let item;
         let tooltip = new Tooltip();
 
+
         this.svg
             .selectAll('rect')
             .data(arr).enter()
@@ -29,7 +30,10 @@ class Diagram {
                 item = arr[i]*15;
                 tooltip.show(item);
             })
-            .on("mousemove", () => tooltip.show())
+            .on("mousemove", (num, i) => {
+                tooltip.hide();
+                tooltip.show(arr[i]*15);
+            })
             .on("mouseout", ()=> tooltip.hide());
 
         //axisx

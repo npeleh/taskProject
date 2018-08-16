@@ -1,7 +1,6 @@
 import * as d3 from "d3";
 
 export class Tooltip {
-
     show(item){
         this.tooltip = d3.select("body")
             .append("div")
